@@ -1,0 +1,11 @@
+# Visual Studio (Code) Configuration Files
+.vs/
+.vscode/
+
+# Qt Build Folder
+build-*/
+release-*/
+
+# CMake Files
+CMakeLists.txt.user
+CMakeFiles/
