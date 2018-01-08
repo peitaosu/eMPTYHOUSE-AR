@@ -62,7 +62,7 @@ eMPTYHOUSEWidget::eMPTYHOUSEWidget(QMainWindow *parent)
     statusBar->addWidget(label_busy_);
     statusBar->addWidget(label_msg_);
     parent->setStatusBar(statusBar);
-    parent->setWindowTitle("EasyAR");
+    parent->setWindowTitle("eMPTYHOUSE");
 
     gridLayout->addWidget(this, 0, 0, 1, 1);
     ui_ = std::make_shared<::Ui::eMPTYHOUSEForm>();
@@ -143,27 +143,6 @@ void eMPTYHOUSEWidget::on_pushButton_stop_clicked()
     label_busy_->repaint();
 }
 
-void eMPTYHOUSEWidget::on_checkBox_track_stateChanged()
-{
-    if (!ar_)
-        return;
-    ar_->setTrack(ui_->checkBox_track->isChecked());
-}
-
-void eMPTYHOUSEWidget::on_checkBox_barcode_stateChanged()
-{
-    if (!ar_)
-        return;
-    ar_->setQRCode(ui_->checkBox_barcode->isChecked());
-}
-
-void eMPTYHOUSEWidget::on_checkBox_hflip_stateChanged()
-{
-    if (!ar_)
-        return;
-    ar_->setHorizontalFlip(ui_->checkBox_hflip->isChecked());
-}
-
 void eMPTYHOUSEWidget::renderGL()
 {
     if (!ar_)
@@ -189,9 +168,7 @@ bool eMPTYHOUSEWidget::start()
         emit message(level, msg);
     });
     ar_->init();
-    ar_->setTrack(ui_->checkBox_track->isChecked());
-    ar_->setQRCode(ui_->checkBox_barcode->isChecked());
-    ar_->setHorizontalFlip(ui_->checkBox_hflip->isChecked());
+    ar_->setTrack(true);
     resume();
     return true;
 }

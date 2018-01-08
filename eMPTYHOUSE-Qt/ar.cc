@@ -119,24 +119,6 @@ void eMPTYHOUSE::setTrack(bool enable)
         tracker_->stop();
 }
 
-void eMPTYHOUSE::setQRCode(bool enable)
-{
-    qrcode_enabled_ = enable;
-    if (!qrcode_)
-        return;
-    if (qrcode_enabled_)
-        qrcode_->start();
-    else
-        qrcode_->stop();
-}
-
-void eMPTYHOUSE::setHorizontalFlip(bool flip)
-{
-    if (!camera_)
-        return;
-    camera_->setHorizontalFlip(flip);
-}
-
 void eMPTYHOUSE::initGL()
 {
     if (renderer_)

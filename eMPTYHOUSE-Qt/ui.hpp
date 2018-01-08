@@ -57,9 +57,6 @@ public:
 signals:
     void message(int, std::string);
 private slots:
-    void on_checkBox_track_stateChanged();
-    void on_checkBox_barcode_stateChanged();
-    void on_checkBox_hflip_stateChanged();
     void on_pushButton_start_clicked();
     void on_pushButton_stop_clicked();
 

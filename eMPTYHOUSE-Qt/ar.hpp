@@ -40,9 +40,7 @@ public:
     void initGL();
     void resizeGL(int width, int height);
 
-    void setQRCode(bool enable);
     void setTrack(bool enable);
-    void setHorizontalFlip(bool flip);
 private:
     void loadFromImage(std::shared_ptr<easyar::ImageTracker> tracker, const std::string& path);
     void loadFromJsonFile(std::shared_ptr<easyar::ImageTracker> tracker, const std::string& path, const std::string& targetname);

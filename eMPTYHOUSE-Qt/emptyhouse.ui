@@ -35,69 +35,10 @@
      </widget>
      <widget class="QWidget" name="layoutWidget">
       <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="3">
-        <widget class="QCheckBox" name="checkBox_barcode">
-         <property name="text">
-          <string>QRCode</string>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="4">
-        <widget class="QCheckBox" name="checkBox_hflip">
-         <property name="text">
-          <string>HFlip</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3">
-        <widget class="QCheckBox" name="checkBox_track">
-         <property name="text">
-          <string>track</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Preferred</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>17</width>
-           <height>15</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="6">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Key</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" rowspan="2">
-        <widget class="QPushButton" name="pushButton_start">
-         <property name="minimumSize">
-          <size>
-           <width>61</width>
-           <height>51</height>
-          </size>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="text">
-          <string>&amp;Start</string>
+       <item row="0" column="3" rowspan="2">
+        <widget class="QPlainTextEdit" name="plainTextEdit">
+         <property name="plainText">
+          <string>EasySDK License Key</string>
          </property>
         </widget>
        </item>
@@ -117,21 +58,21 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="5">
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
+       <item row="0" column="0" rowspan="2">
+        <widget class="QPushButton" name="pushButton_start">
+         <property name="minimumSize">
           <size>
-           <width>37</width>
-           <height>15</height>
+           <width>61</width>
+           <height>51</height>
           </size>
          </property>
-        </spacer>
-       </item>
-       <item row="0" column="7" rowspan="2">
-        <widget class="QPlainTextEdit" name="plainTextEdit"/>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="text">
+          <string>&amp;Start</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
