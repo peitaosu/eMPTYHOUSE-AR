@@ -38,7 +38,7 @@
        <item row="0" column="3" rowspan="2">
         <widget class="QPlainTextEdit" name="plainTextEdit">
          <property name="plainText">
-          <string>EasySDK License Key</string>
+          <string>EasyAR SDK License Key</string>
          </property>
         </widget>
        </item>
