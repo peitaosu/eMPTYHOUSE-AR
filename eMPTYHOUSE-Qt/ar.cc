@@ -65,9 +65,6 @@ bool eMPTYHOUSE::init()
     streamer_ = std::make_shared<CameraFrameStreamer>();
     streamer_->attachCamera(camera_);
 
-    qrcode_ = std::make_shared<QRCodeScanner>();
-    qrcode_->attachStreamer(streamer_);
-
     tracker_ = std::make_shared<ImageTracker>();
     tracker_->attachStreamer(streamer_);
 
@@ -88,11 +85,7 @@ bool eMPTYHOUSE::start()
     status &= streamer_->start();
     camera_->setFocusMode(CameraDeviceFocusMode::Continousauto);
 
-    if (qrcode_enabled_)
-        status &= qrcode_->start();
-
-    if (track_enabled_)
-        status &= tracker_->start();
+    status &= tracker_->start();
     return status;
 }
 
@@ -102,7 +95,6 @@ bool eMPTYHOUSE::stop()
         return false;
     bool status = true;
     status &= tracker_->stop();
-    status &= qrcode_->stop();
     status &= streamer_->stop();
     status &= camera_->stop();
     return status;
@@ -110,10 +102,9 @@ bool eMPTYHOUSE::stop()
 
 void eMPTYHOUSE::setTrack(bool enable)
 {
-    track_enabled_ = enable;
     if (!tracker_)
         return;
-    if (track_enabled_)
+    if (enable)
         tracker_->start();
     else
         tracker_->stop();
@@ -162,14 +153,6 @@ void eMPTYHOUSE::render()
         }
     }
 
-    static int qrcode_index = 0;
-    if (frame->index() != qrcode_index) {
-        qrcode_index = frame->index();
-        if (!frame->text().empty()) {
-            if (message_)
-                message_(1, "qrcode: " + frame->text());
-        }
-    }
 }
 
 void eMPTYHOUSE::resizeGL(int width, int height)

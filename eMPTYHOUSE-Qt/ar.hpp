@@ -17,7 +17,6 @@
 #include "easyar/renderer.hpp"
 #include "easyar/engine.hpp"
 #include "easyar/framestreamer.hpp"
-#include "easyar/qrcode.hpp"
 
 #include "boxrenderer.hpp"
 #include "easyar/imagetarget.hpp"
@@ -49,13 +48,10 @@ private:
     std::shared_ptr<CameraDevice> camera_;
     std::shared_ptr<CameraFrameStreamer> streamer_;
     std::shared_ptr<Renderer> renderer_;
-    std::shared_ptr<QRCodeScanner> qrcode_;
     std::shared_ptr<ImageTracker> tracker_;
 
     std::shared_ptr<BoxRenderer> box_renderer_;
     easyar::Vec2I view_size_;
-    bool track_enabled_{true};
-    bool qrcode_enabled_{false};
     std::function<void(int, std::string)> message_;
 };
 
