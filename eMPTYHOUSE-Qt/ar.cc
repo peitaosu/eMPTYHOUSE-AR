@@ -115,8 +115,8 @@ void eMPTYHOUSE::initGL()
     if (renderer_)
         return;
     renderer_ = std::make_shared<Renderer>();
-    box_renderer_ = std::make_shared<BoxRenderer>();
-    box_renderer_->init();
+    video_renderer_ = std::make_shared<VideoRenderer>();
+    video_renderer_->init();
 }
 
 void eMPTYHOUSE::render()
@@ -146,10 +146,15 @@ void eMPTYHOUSE::render()
 
     for (auto && target : frame->targetInstances()) {
         if (target->status() == TargetStatus::Tracked) {
+            VideoPlayer* video = new VideoPlayer();
+            video->setVideoType(VideoType::Normal);
+            video->setRenderTexture((void *)video_renderer_->texId());
+            video->open("video.mp4", StorageType::Assets, NULL);
             auto imagetarget = std::dynamic_pointer_cast<ImageTarget>(target->target());
             if (!imagetarget)
                 continue;
-            box_renderer_->render(camera_->projectionGL(0.2f, 500.f), target->poseGL(), imagetarget->size());
+            video->updateFrame();
+            video_renderer_->render(camera_->projectionGL(0.2f, 500.f), target->poseGL(), imagetarget->size());
         }
     }
 
