@@ -147,20 +147,19 @@ void eMPTYHOUSE::render()
     for (auto && target : frame->targetInstances()) {
         if (target->status() == TargetStatus::Tracked) {
             if (video == NULL){
-                video = new VideoPlayer();
-                video->setRenderTexture((void *)video_renderer_->texId());
-                video->open("video.mp4", StorageType::Assets, NULL);
+                video = new ARVideo();
+                video->openVideoFile("video.mp4", video_renderer_->texId());
             }
             if (video != NULL) {
-                video->play();
+                video->onFound();
             }
             auto imagetarget = std::dynamic_pointer_cast<ImageTarget>(target->target());
             if (!imagetarget)
                 continue;
-            video->updateFrame();
+            video->update();
             video_renderer_->render(camera_->projectionGL(0.2f, 500.f), target->poseGL(), imagetarget->size());
         }else{
-            video->pause();
+            video->onLost();
         }
     }
 

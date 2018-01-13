@@ -20,6 +20,7 @@
 
 #include "boxrenderer.hpp"
 #include "videorenderer.hpp"
+#include "arvideo.hpp"
 #include "easyar/imagetarget.hpp"
 #include "easyar/imagetracker.hpp"
 #include <QString>
@@ -54,7 +55,7 @@ private:
     std::shared_ptr<VideoRenderer> video_renderer_;
     easyar::Vec2I view_size_;
     std::function<void(int, std::string)> message_;
-    VideoPlayer* video;
+    ARVideo* video = NULL;
 };
 
 }
