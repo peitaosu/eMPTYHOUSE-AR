@@ -54,6 +54,7 @@ private:
     std::shared_ptr<VideoRenderer> video_renderer_;
     easyar::Vec2I view_size_;
     std::function<void(int, std::string)> message_;
+    VideoPlayer* video;
 };
 
 }
