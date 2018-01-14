@@ -10,14 +10,12 @@ ARVideo::ARVideo()
 ARVideo::~ARVideo()
 {
     player_.close();
-    if(callback_)
-        delete callback_;
 }
 
 void ARVideo::openVideoFile(const std::string& path, int texid)
 {
     if(!callback_)
-        callback_ = new CallBack(this);
+        callback_ = CallBack(this);
     path_ = path;
     player_.setRenderTexture((void *)texid);
     player_.setVideoType(easyar::VideoType::Normal);
@@ -27,7 +25,7 @@ void ARVideo::openVideoFile(const std::string& path, int texid)
 void ARVideo::openTransparentVideoFile(const std::string& path, int texid)
 {
     if(!callback_)
-        callback_ = new CallBack(this);
+        callback_ = CallBack(this);
     path_ = path;
     player_.setRenderTexture((void *)texid);
     player_.setVideoType(easyar::VideoType::TransparentSideBySide);
@@ -37,7 +35,7 @@ void ARVideo::openTransparentVideoFile(const std::string& path, int texid)
 void ARVideo::openStreamingVideo(const std::string& url, int texid)
 {
     if(!callback_)
-        callback_ = new CallBack(this);
+        callback_ = CallBack(this);
     path_ = url;
     player_.setRenderTexture((void *)texid);
     player_.setVideoType(easyar::VideoType::Normal);

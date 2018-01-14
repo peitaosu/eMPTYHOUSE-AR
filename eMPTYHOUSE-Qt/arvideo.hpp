@@ -34,6 +34,6 @@ private:
     easyar::VideoPlayer player_;
     bool prepared_;
     bool found_;
-    CallBack* callback_;
+    std::function<void(easyar::VideoStatus)> callback_;
     std::string path_;
 };
