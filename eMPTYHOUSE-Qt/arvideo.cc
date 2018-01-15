@@ -17,7 +17,7 @@ void ARVideo::openVideoFile(const std::string& path, int texid)
     if(!callback_)
         callback_ = CallBack(this);
     path_ = path;
-    player_.setRenderTexture((void *)texid);
+    player_.setRenderTexture(&texid);
     player_.setVideoType(easyar::VideoType::Normal);
     player_.open(path.c_str(), easyar::StorageType::Assets, callback_);
 }
@@ -27,7 +27,7 @@ void ARVideo::openTransparentVideoFile(const std::string& path, int texid)
     if(!callback_)
         callback_ = CallBack(this);
     path_ = path;
-    player_.setRenderTexture((void *)texid);
+    player_.setRenderTexture(&texid);
     player_.setVideoType(easyar::VideoType::TransparentSideBySide);
     player_.open(path.c_str(), easyar::StorageType::Assets, callback_);
 }
@@ -37,7 +37,7 @@ void ARVideo::openStreamingVideo(const std::string& url, int texid)
     if(!callback_)
         callback_ = CallBack(this);
     path_ = url;
-    player_.setRenderTexture((void *)texid);
+    player_.setRenderTexture(&texid);
     player_.setVideoType(easyar::VideoType::Normal);
     player_.open(url.c_str(), easyar::StorageType::Assets, callback_);
 }
